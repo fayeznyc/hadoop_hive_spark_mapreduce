@@ -1,0 +1,231 @@
+    1  wget http://us.mirrors.quenda.co/apache/hadoop/common/hadoop-2.8.4/hadoop-2.8.4.tar.gz
+    2  su - love
+    3  ssh-keygen -t rsa -P ""
+    4  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    5  chmod 600 ~/.ssh/authorized_keys
+    6  ssh-copy-id -i ~/.ssh/id_rsa.pub localhost
+    7  ssh localhost
+    8  hadoop namenode -format
+    9  start-dfs.sh
+   10  start-yarn.sh
+   11  jps
+   12  hadoop namenode -format
+   13  start-dfs.sh
+   14  start-yarn.sh
+   15  jps
+   16  su - love
+   17  ls
+   18  su - love
+   19  nano ~/.bashrc
+   20  source ~/.bashrc
+   21  su - love
+   22  jps
+   23  editor ~/.bashrc
+   24  source ~/.bashrc
+   25  hadoop fs -mkdir /user
+   26  hadoop fs -mkdir /user/joe
+   27  hadoop fs -mkdir /user/joe/wordcount
+   28  hadoop fs -mkdir /user/joe/wordcount/input
+   29  nano file01
+   30  nano file02
+   31  cat file01
+   32  cat file02
+   33  nano WordCount.java
+   34  hadoop fs -cat /user/joe/wordcount/input/file01
+   35  hadoop fs -put file01 /user/joe/wordcount/input
+   36  hadoop fs -put file02 /user/joe/wordcount/input
+   37  hadoop fs -cat /user/joe/wordcount/input/file01
+   38  hadoop fs -cat /user/joe/wordcount/input/file02
+   39  nano WordCount.java
+   40  hadoop com.sun.tools.javac.Main WordCount.java
+   41  jar cf wc.jar WordCount*.class
+   42  hadoop jar wc.jar WordCount /user/joe/wordcount/input /user/joe/wordcount/output
+   43  hadoop fs -cat /user/joe/wordcount/output/part-00000
+   44  cd  /usr/local/hadoop/etc/hadoop
+   45  CD MapReduceTutorial/
+   46  cd MapreduceTutorial/
+   47  ls
+   48  cd MapReduceTutorial/
+   49  sudo chmod +r *.*
+   50  javac -d . SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java
+   51  editor ~/.bashrc
+   52  javac -d . SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java
+   53  source ~/.bashrc
+   54  javac -d . SalesMapper.java SalesCountryReducer.java SalesCountryDriver.java
+   55  ls
+   56  gedit Manifest.txt
+   57  Main-Class: SalesCountry.SalesCountryDriverjar cfm ProductSalePerCountry.jar Manifest.txt SalesCountry/*.class
+   58  jar cfm ProductSalePerCountry.jar Manifest.txt SalesCountry/*.class
+   59  ls
+   60  hadoop fs -mkdir ~/inputMapReduce
+   61  hadoop fs -mkdir /inputMapReduce
+   62  hadoop fs -put SalesJan2009.csv /inputMapReduce
+   63  hadoop dfs -copyFromLocal /inputMapReduce /
+   64  ls
+   65  hadoop jar ProductSalePerCountry.jar /inputMapReduce /mapreduce_output_sales
+   66  hadoop fs -cat /mapreduce_output_sales/part-00000
+   67  hadoop fs -cat /user/joe/wordcount/output/part-00000
+   68  sudo mkdir MapReduceTutorial
+   69  ls
+   70  chmod -R 777 MapReduceTutorial
+   71  ls
+   72  cd Downloads/
+   73  ls
+   74  tar xzf First_Hadoop_Program.zip
+   75  editor ~/.bashrc
+   76  jps
+   77  cd 
+   78  ls
+   79  chmod +x reducer.py
+   80  hadoop jar /usr/local/hadoop-2.9.1/share/hadoop/tools/lib/hadoop-*streaming*.jar -file mapper.py    -mapper mapper.py -file reducer.py   -reducer reducer.py -input /user/hduser/gutenberg/* -output /user/hduser/gutenberg-output
+   81  hadoop jar /usr/local/hadoop-2.8.4/share/hadoop/tools/lib/hadoop-*streaming*.jar -file mapper.py    -mapper mapper.py -file reducer.py   -reducer reducer.py -input /user/hduser/gutenberg/* -output /user/hduser/gutenberg-output
+   82  hadoop jar /usr/local/hadoop-2.8.4/share/hadoop/tools/lib/hadoop-*streaming*.jar -file mapper.py    -mapper mapper.py -file reducer.py   -reducer reducer.py -input /user/hduser/gutenberg/* -output /user/hduser/gutenberg-output4
+   83  nano mapper.py
+   84  nano reducer.py
+   85  hadoop jar /usr/local/hadoop-2.8.4/share/hadoop/tools/lib/hadoop-*streaming*.jar -file mapper.py    -mapper mapper.py -file reducer.py   -reducer reducer.py -input /user/hduser/gutenberg/* -output /user/hduser/gutenberg-output5
+   86  hadoop fs -cat /user/hduser/gutenberg-output5/part-r-00000
+   87  hadoop fs -cat /user/hduser/gutenberg-output5/part-00000
+   88  wget http://archive.apache.org/dist/hive/hive-2.1.0/apache-hive-2.1.0-bin.tar.gz
+   89  tar -xzf apache-hive-2.1.0-bin.tar.gz
+   90  ls
+   91  gedit .bashrc
+   92  source .bashrc
+   93  hdfs dfs -mkdir -p /user/hive/warehouse
+   94  hdfs dfs -mkdir /tmp
+   95  hdfs dfs -chmod g+w /user/hive/warehouse
+   96  hdfs dfs -chmod g+w /tmp
+   97  cd apache-hive-2.1.0-bin/
+   98  gedit conf/hive-env.sh
+   99  source .bashrc
+  100  editor ~/.bashrc
+  101  source ~/.bashrc
+  102  gedit conf/hive-site.xml
+  103  gedit conf/hive-env.sh
+  104  bin/schematool -initSchema -dbType derby
+  105  hive
+  106  nano helloworld.py
+  107  cat helloworld.py
+  108  python helloworld.py
+  109  apt install python
+  110  su - love
+  111  sudo ntpdate time.nist.gov
+  112  java -version 
+  113  cd Downloads
+  114  ls
+  115  tar xvf scala-2.11.6.tgz
+  116  tar xvf scala-2.12.6.tgz
+  117  mv scala-2.12.6 /usr/local/scala
+  118  su - love
+  119  nano ~/.bashrc
+  120  mkdir $DERBY_HOME/data
+  121  sudo mkdir $DERBY_HOME/data
+  122  cd $DERBY_HOME/data
+  123  cd $DERBY_HOME
+  124  su - love
+  125  editor ~/.bashrc
+  126  export HIVE_HOME=/usr/local/hive
+  127  export PATH=$PATH:$HIVE_HOME/bin
+  128  export CLASSPATH=$CLASSPATH:/usr/local/Hadoop/lib/*:.
+  129  export CLASSPATH=$CLASSPATH:/usr/local/hive/lib/*:.
+  130  source ~/.bashrc
+  131  cd $HIVE_HOME/conf
+  132  cp hive-env.sh.template hive-env.
+  133  sudo cp hive-env.sh.template hive-env.
+  134  su - love
+  135  editor ~/.bashrc
+  136  source ~/.bashrc
+  137  spark-shell
+  138  editor ~/.bashrc
+  139  source ~/.bashrc
+  140  jps
+  141  hive --version
+  142  cd apache-hive-2.1.0-bin/
+  143  gedit conf/hive-env.sh
+  144  gedit conf/hive-site.xml
+  145  hive
+  146  editor ~/.bashrc
+  147  source ~/.bashrc
+  148  hive
+  149  gedit conf/hive-env.sh
+  150  hive
+  151  jps
+  152  hive
+  153  cd ..
+  154  su - love
+  155  editor ~/.bashrc
+  156  source ~/.bashrc
+  157  scala -version
+  158  su - love
+  159  jps
+  160  cd
+  161  nano gedit  ~/.bashrc
+  162  editor ~/.bashrc
+  163  source ~/.bashrc
+  164  jps
+  165  hadoop fs -mkdir /usr
+  166  hadoop fs -mkdir /usr/hive
+  167  hadoop fs -chmod g+w /usr/hive/warehouse
+  168  hadoop fs -chmod g+w /usr/hive/warehouse/
+  169  hadoop fs -chmod g+w /usr
+  170  hadoop fs -mkdir /usr/hive/
+  171  hadoop fs -mkdir /usr/hive/warehouse
+  172  hadoop fs -chmod g+w /usr/hive/warehouse
+  173  hive
+  174  create database sample;
+  175  hive
+  176  cd
+  177  hive
+  178  cd $HIVE_HOME/conf
+  179  jps
+  180  hadoop fs -mkdir /user/hive/warehouse
+  181  hadoop fs -chmod g+w /t
+  182  hadoop fs -chmod g+w /tmp 
+  183  hadoop fs -chmod g+w /user/hive/wareh
+  184  cd $HIVE_HOME
+  185  bin/hive
+  186  cd
+  187  hive
+  188  nano hive-site.xml
+  189  hive
+  190  cd
+  191  hive
+  192  hadoop dfs –chmod 765 /user/hive/warehouse
+  193  hadoop fs –chmod 765 /user/hive/warehouse
+  194  HIVE_HOME/bin/schematool –initschema –dbtype derby
+  195  jps
+  196  cd Downloedn
+  197  cd Downloads/
+  198  jps
+  199  hive
+  200  cd
+  201  nano input.txt
+  202  jps
+  203  su - love
+  204  cd 
+  205  nano .bashrc
+  206  source .bashrc
+  207  hive
+  208  pig
+  209  mysql
+  210  su - love
+  211  cd /tmp
+  212  nano input.txt
+  213  cat /tmp/input.txt
+  214  nano /tmp/input.txt
+  215  cd
+  216  cd /tmp
+  217  nano input2.txt
+  218  cat /input2.txt
+  219  cat input2.txt
+  220  spark-shell
+  221  ls
+  222  cat input.tax
+  223  cat input.txt
+  224  val inputfile = sc.textFile("file:///home/hadoopuser/input.txt")
+  225  spark-shell
+  226  nano input.txt
+  227  cat input2.txt
+  228  spark-shell
+  229  su - love
+  230  history
+  231  history > history_hadoop.txt
